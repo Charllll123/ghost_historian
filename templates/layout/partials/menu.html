@@ -1,0 +1,47 @@
+{% load static %}
+<nav>
+    <ul>
+      <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+      <li><a href="" class="nav-link">Autenticarse</a></li>
+      <div class="dropdown">
+        <button class="dropbtn">Crear cuenta</button>
+        <div class="dropdown-content">
+          <a href="#">Usuario</a>
+          <a href="#">Contribuyente</a>
+        </div>
+      </div>
+      <li><a href="{% url 'verhecho' %}" class="nav-link">Hechos Historicos</a></li>
+      <li><a href="{% url 'figuras' %}" class="nav-link">Figuras</a></li>
+      <form method='GET' action='{% url "buscar" %}'>
+        <div class="buscar">
+          <div class="buscar-interno">
+            <input type="text" name="buscar" placeholder="Buscar..." class="buscar-bar">
+            <button type="submit" value="buscar">Buscar</button>
+          </div>
+        </div>
+      </form>
+      
+      
+      
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="message-item {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        <script>
+          
+          document.addEventListener("DOMContentLoaded", function () {
+            const messageItems = document.querySelectorAll('.message-item');
+            messageItems.forEach(item => {
+              item.style.display = 'block';
+            });
+          });
+        </script>
+      {% endif %}
+      
+      </form>
+      <li><a class="nav-link active about-link" href="{% url 'about' %}">Sobre nosotros</a></li>
+    </ul>
+</nav>
+  
