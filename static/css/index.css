@@ -250,3 +250,54 @@ p {
     background-color: #45a049;
 }
 
+/* Estilo general del formulario */
+.registro {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Estilo de los títulos */
+.registro h3 {
+  text-align: center;
+  margin: 0 0 10px 0;
+  color: #e7e3e3;
+  
+}
+.registro h1 {
+    text-align: center;
+    margin: 0 0 10px 0;
+    color: #159235;
+    border: #000000;
+}
+
+/* Estilo de los campos de entrada */
+.registro input {
+  display: block;
+  width: 95%;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  border: black 2px solid;
+}
+
+/* Estilo del botón de envío */
+.registro button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Estilo del botón de envío al pasar el ratón */
+.registro button:hover {
+  background-color: #079741;
+}

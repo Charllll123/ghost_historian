@@ -1,25 +1,50 @@
 {% load static %}
-<nav>
+<nav >
     <ul>
       <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-      <li><a href="" class="nav-link">Autenticarse</a></li>
-      <div class="dropdown">
-        <button class="dropbtn">Crear cuenta</button>
-        <div class="dropdown-content">
-          <a href="#">Usuario</a>
-          <a href="#">Contribuyente</a>
-        </div>
-      </div>
-      <li><a href="{% url 'verhecho' %}" class="nav-link">Hechos Historicos</a></li>
-      <li><a href="{% url 'figuras' %}" class="nav-link">Figuras</a></li>
-      <form method='GET' action='{% url "buscar" %}'>
-        <div class="buscar">
-          <div class="buscar-interno">
-            <input type="text" name="buscar" placeholder="Buscar..." class="buscar-bar">
-            <button type="submit" value="buscar">Buscar</button>
+      {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button class="dropbtn">Historia</button>
+          <div class="dropdown-content">
+            <li><a href="{% url 'verhecho' %}" class="nav-link">Hechos Historicos</a></li>
+            <li><a href="{% url 'figuras' %}" class="nav-link">Figuras</a></li>
           </div>
         </div>
-      </form>
+      {% endif %}
+      
+      <div class="dropdown">
+        <button class="dropbtn">Cuenta</button>
+        <div class="dropdown-content">
+          <a href="{% url 'createuser' %}">Crear</a>
+          {% if user.is_authenticated %}
+            <a href="">Ver</a>
+            <a href="">Editar</a>
+            <a href="">Borrar</a>
+            <a href="">Salir</a>
+          {% else %}  
+            <a href="">Ingresar</a>
+          {% endif %}
+          
+        </div>
+        
+      </div>
+      {% if user.is_authenticated %}
+          <h3>Hola, {{user.username|capfirst}}</h3>
+      {% endif %}
+      {% if user.is_authenticated %}
+            <form method='GET' action='{% url "buscar" %}'>
+              <div class="buscar">
+                <div class="buscar-interno">
+                  <input type="text" name="buscar" placeholder="Buscar..." class="buscar-bar">
+                  <button type="submit" value="buscar">Buscar</button>
+                </div>
+              </div>
+            </form>
+            
+      {% else %}
+            <h3>Ingrese su cuenta para acceder a las funciones</h3>
+      {% endif %}
+          
       
       
       
